@@ -1,2 +1,4 @@
+include ':discador'
 include ':horadocha'
+include ':mensagematrasada'
 rootProject.name = "Bibliotecas"
