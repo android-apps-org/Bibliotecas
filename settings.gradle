@@ -1,3 +1,4 @@
+include ':reproducao'
 include ':discador'
 include ':ferramenta'
 include ':horadocha'
