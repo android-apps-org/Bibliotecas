@@ -42,8 +42,10 @@ public class DialerActivity extends Activity {
 
     private Intent createCallIntentFromNumber() {
         final Intent intentToCall = new Intent(Intent.ACTION_CALL);
+
         String number = mCallerNumber.getText().toString();
         intentToCall.setData(Uri.parse("tel:" + number));
+
         return intentToCall;
     }
 

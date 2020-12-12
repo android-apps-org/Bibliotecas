@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:text="@string/button_dial_number"
         android:layout_gravity="center_horizontal"
-        android:onClick="onCall"/>
+        android:onClick="onCall" />
 
     <Button android:id="@+id/button_pick_contact"
         style="?android:attr/buttonStyleSmall"
@@ -28,6 +28,6 @@
         android:layout_height="wrap_content"
         android:text="@string/button_pick_contact"
         android:layout_gravity="center_horizontal"
-        android:onClick="onPickContact"/>
+        android:onClick="onPickContact" />
 
 </LinearLayout>

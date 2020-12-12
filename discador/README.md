@@ -21,4 +21,5 @@
 ## Resources
 
 - [Testing Samples](https://github.com/android/testing-samples)
+- [Permission Samples](https://github.com/android/permissions-samples)
 
