@@ -5,7 +5,7 @@ buildscript {
         targetSdkVersion = 30
         compiledSdkVersion = 30
         buildToolsVersion = "30.0.2"
-        googleServicesVersion = "4.3.0"
+        googleServicesVersion = "4.3.4"
         gradleVersion = "4.1.1"
 
         // version
@@ -19,8 +19,12 @@ buildscript {
         constraintLayoutVersion = "2.0.4"
         exoPlayerVersion = "2.10.0"
         firebaseAppIndexingVersion = "10.0.0"
+        firebaseBomVersion = "26.1.1"
+        firebaseMessagingVersion = "21.0.0"
         googlePlayServicesVersion = "18.0.0"
         materialDesignVersion = "1.2.1"
+        preferenceVersion = "1.1.1"
+        schematicVersion = "0.7.0"
         supportLibraryVersion = "30.0.0"
         timberVersion = "4.7.1"
 
