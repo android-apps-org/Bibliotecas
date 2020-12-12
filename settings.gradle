@@ -1,3 +1,4 @@
+include ':emojifyme'
 include ':androidme'
 include ':discador'
 include ':ferramenta'
