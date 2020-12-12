@@ -15,6 +15,7 @@ public class ContactsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
         setResult(Activity.RESULT_OK, createResultData("896-745-231"));
+
         finish();
     }
 
@@ -22,6 +23,7 @@ public class ContactsActivity extends Activity {
     static Intent createResultData(String phoneNumber) {
         final Intent resultData = new Intent();
         resultData.putExtra(KEY_PHONE_NUMBER, phoneNumber);
+
         return resultData;
     }
 }

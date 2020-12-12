@@ -29,18 +29,18 @@ android {
 }
 
 dependencies {
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.ext.espressoVersion"
-    androidTestImplementation "androidx.test.ext:junit:$rootProject.ext.androidxJunitVersion"
-    androidTestImplementation "androidx.test:runner:$rootProject.ext.testRunnerVersion"
-    androidTestImplementation "androidx.test:rules:$rootProject.ext.testRunnerVersion"
-    androidTestImplementation "androidx.test.uiautomator:uiautomator:$rootProject.ext.androidxUIAutomatorVersion"
-    androidTestImplementation "org.hamcrest:hamcrest-library:$rootProject.ext.hamcrestVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test:runner:$testRunnerVersion"
+    androidTestImplementation "androidx.test:rules:$testRunnerVersion"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:$androidxUIAutomatorVersion"
+    androidTestImplementation "org.hamcrest:hamcrest-library:$hamcrestVersion"
 
-    implementation "androidx.appcompat:appcompat:$rootProject.ext.appCompatVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayoutVersion"
-    implementation "androidx.core:core:$rootProject.ext.androidxCoreVersion"
-    implementation "com.google.android.material:material:$rootProject.ext.materialDesignVersion"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.core:core:$androidxCoreVersion"
+    implementation "com.google.android.material:material:$materialDesignVersion"
 
-    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+    testImplementation "junit:junit:$junitVersion"
 }
