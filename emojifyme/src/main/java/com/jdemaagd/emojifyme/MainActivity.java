@@ -67,6 +67,45 @@ public class MainActivity extends AppCompatActivity {
         Timber.plant(new Timber.DebugTree());
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+            @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_STORAGE_PERMISSION: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    launchCamera();
+                } else {
+                    Toast.makeText(this, R.string.permission_denied, Toast.LENGTH_SHORT).show();
+                }
+                break;
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            processAndSetImage();
+        } else {
+            BitmapUtils.deleteImageFile(this, mTempPhotoPath);
+        }
+    }
+
+    @OnClick(R.id.clear_button)
+    public void clearImage() {
+        mImageView.setImageResource(0);
+        mEmojifyButton.setVisibility(View.VISIBLE);
+        mTitleTextView.setVisibility(View.VISIBLE);
+        mShareFab.setVisibility(View.GONE);
+        mSaveFab.setVisibility(View.GONE);
+        mClearFab.setVisibility(View.GONE);
+
+        BitmapUtils.deleteImageFile(this, mTempPhotoPath);
+    }
+
     /**
      * "Emojify Me!" Launches camera app
      */
@@ -84,20 +123,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-            @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_STORAGE_PERMISSION: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    launchCamera();
-                } else {
-                    Toast.makeText(this, R.string.permission_denied, Toast.LENGTH_SHORT).show();
-                }
-                break;
-            }
-        }
+    @OnClick(R.id.save_button)
+    public void saveMe() {
+        BitmapUtils.deleteImageFile(this, mTempPhotoPath);
+        BitmapUtils.saveImage(this, mResultsBitmap);
+    }
+
+    @OnClick(R.id.share_button)
+    public void shareMe() {
+        BitmapUtils.deleteImageFile(this, mTempPhotoPath);
+        BitmapUtils.saveImage(this, mResultsBitmap);
+        BitmapUtils.shareImage(this, mTempPhotoPath);
     }
 
     /**
@@ -127,17 +163,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            processAndSetImage();
-        } else {
-            BitmapUtils.deleteImageFile(this, mTempPhotoPath);
-        }
-    }
-
     /**
      * Process captured image and setting it to TextView
      */
@@ -151,30 +176,5 @@ public class MainActivity extends AppCompatActivity {
         mResultsBitmap = BitmapUtils.resamplePic(this, mTempPhotoPath);
         mResultsBitmap = Emojifier.detectFacesAndOverlayEmoji(this, mResultsBitmap);
         mImageView.setImageBitmap(mResultsBitmap);
-    }
-
-    @OnClick(R.id.save_button)
-    public void saveMe() {
-        BitmapUtils.deleteImageFile(this, mTempPhotoPath);
-        BitmapUtils.saveImage(this, mResultsBitmap);
-    }
-
-    @OnClick(R.id.share_button)
-    public void shareMe() {
-        BitmapUtils.deleteImageFile(this, mTempPhotoPath);
-        BitmapUtils.saveImage(this, mResultsBitmap);
-        BitmapUtils.shareImage(this, mTempPhotoPath);
-    }
-
-    @OnClick(R.id.clear_button)
-    public void clearImage() {
-        mImageView.setImageResource(0);
-        mEmojifyButton.setVisibility(View.VISIBLE);
-        mTitleTextView.setVisibility(View.VISIBLE);
-        mShareFab.setVisibility(View.GONE);
-        mSaveFab.setVisibility(View.GONE);
-        mClearFab.setVisibility(View.GONE);
-
-        BitmapUtils.deleteImageFile(this, mTempPhotoPath);
     }
 }
